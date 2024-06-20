@@ -1,17 +1,21 @@
-# Server Setup:
+## Automated Django app deployment on DigitalOcean droplet
 
-## Setting up self-hosted GitHub runner:
+This project automates Django deployments on a DigitalOcean droplet using GitHub Actions. It sets up Python dependencies, manages a uWSGI service with systemd, and utilizes Nginx for web serving. Automated GitHub Actions using self hosted runner for updates and maintenance of the application.
+
+## Server Setup:
+
+### Setting up self-hosted GitHub runner:
 - Repository settings > Actions > Runners > New self-hosted runner.
 - Follow the instructions given there.
 - Install and start the service for the same.([Reference](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service))
 - Run the `actions/checkout` action once to setup your repository on the server.
 
-## Setting up Python environment:
+### Setting up Python environment:
 - Installing dependencies: ```sudo apt install -y python3 python3-pip python3-venv nginx```
 - Create python virtual environment: ```python3 -m venv venv``` this is located in home directory of user.
 - Installing project dependencies: ```pip install -r requirements.txt```
 
-## Setting up `django-app.service`:
+### Setting up `django-app.service`:
 - Created a `systemd` service named `django-app.service`.
 - Located at `/etc/systemd/systemd/`
 - ```ini
