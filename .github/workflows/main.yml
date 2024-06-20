@@ -1,0 +1,17 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Server Restart Scripts
+        run: |
+          bash server-restart.sh
